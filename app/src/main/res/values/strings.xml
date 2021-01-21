@@ -6,4 +6,6 @@
     <string name="about">About:</string>
     <string name="textAboutBeer">Ožujsko (fully Ožujsko pivo; lit. March Beer), also known and marketed as Žuja,[1] is a Croatian brand of lager beer (5%). It is the flagship brand produced by Zagrebačka pivovara, the biggest brewery in the country which is a part of Molson Coors Brewing Company since 2013.</string>
     <string name="hello_world">HelloWorld</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
