@@ -1,12 +1,16 @@
 package karimovic.toni.mybeers;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -15,16 +19,41 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
+    private ImageButton mInfoButton;
+    private AboutAppFragment mAboutAppFragment;
 
+    private FragmentManager mFragmentManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setAboutAppButton();
+
         initViews();
         setUpPager();
         setTabIcons();
+
+
+    }
+
+    private void setAboutAppButton() {
+        AboutAppFragment aboutAppFragment = new AboutAppFragment();
+        mInfoButton = (ImageButton) findViewById(R.id.btAboutApp);
+        mInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.add(R.id.flAboutAppFragmentContainer, aboutAppFragment);
+                fragmentTransaction.commit();
+            }
+        });
+    }
+
+    private void setUpAboutAppFragment() {
+
+
     }
 
     private void setTabIcons() {
