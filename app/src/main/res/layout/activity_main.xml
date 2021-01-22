@@ -51,9 +51,14 @@
         android:layout_width="230.5dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-
         />
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBeerList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAppName"
+        android:layout_marginTop="76.5dp"
+        />
 
 
 </RelativeLayout>

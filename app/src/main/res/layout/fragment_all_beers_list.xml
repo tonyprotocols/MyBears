@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6E9"
+    android:id="@+id/fragment_all_beers_list">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_all_beers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</RelativeLayout>

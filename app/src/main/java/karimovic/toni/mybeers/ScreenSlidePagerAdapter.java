@@ -13,7 +13,7 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
 
     public ScreenSlidePagerAdapter(FragmentManager fm){
-        super(fm);
+        super(fm, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
 
 
@@ -22,9 +22,9 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return ScreenSlidePageFragment.newInstance("This is fragment #1");
-            case 1:
                 return ScreenSlidePageFragment.newInstance("This is fragment #2");
+            case 1:
+                return new AllBeersFragment();
             default:
                 return ScreenSlidePageFragment.newInstance("This is fragment #3");
         }

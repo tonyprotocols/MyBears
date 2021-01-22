@@ -8,20 +8,21 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ButtonExitFFromAboutListener {
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private ImageButton mInfoButton;
     private AboutAppFragment mAboutAppFragment;
-
     private FragmentManager mFragmentManager;
 
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.flAboutAppFragmentContainer, aboutAppFragment);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
@@ -79,4 +81,8 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout = findViewById(R.id.tab);
     }
 
+    @Override
+    public void onButtonCLicked(boolean state) {
+        onBackPressed();
+    }
 }

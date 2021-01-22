@@ -1,5 +1,6 @@
 package karimovic.toni.mybeers;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import java.util.function.ToDoubleBiFunction;
 
 public class AboutAppFragment extends Fragment {
 
+    private ButtonExitFFromAboutListener mButtonListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,11 +34,25 @@ public class AboutAppFragment extends Fragment {
         mExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "About Fragment Exit", Toast.LENGTH_LONG).show();
+                if (mButtonListener != null)
+                    mButtonListener.onButtonCLicked(true);
             }
         });
         return view;
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof ButtonExitFFromAboutListener){
+            mButtonListener = (ButtonExitFFromAboutListener) context;
 
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mButtonListener = null;
+    }
 }
