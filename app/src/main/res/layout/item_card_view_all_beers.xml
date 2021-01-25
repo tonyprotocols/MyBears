@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="138dp"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="8dp"
+    android:outlineAmbientShadowColor="@color/black"
+    android:outlineSpotShadowColor="@color/black"
+    android:backgroundTint="@color/card_background"
+    >
 
     <ImageView
+        android:id="@+id/image_view_beer"
         android:layout_width="match_parent"
         android:layout_height="90dp"
+        android:src="@drawable/ozujskoteaser"
         />
 
     <TextView
@@ -15,6 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:text="Ožujsko" />
+        android:text="Ožujsko"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:paddingBottom="16dp"
+      />
 
 </androidx.cardview.widget.CardView>

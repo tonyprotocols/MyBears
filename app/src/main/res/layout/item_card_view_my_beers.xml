@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="251dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="8dp"
+    android:outlineAmbientShadowColor="@color/black"
+    android:outlineSpotShadowColor="@color/black"
+    android:backgroundTint="@color/card_background">
+
+    <ImageView
+        android:id="@+id/image_view_my_beer"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        />
+
+    <TextView
+        android:id="@+id/beer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="106dp"
+        android:text="Ožujsko"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/beer_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Country: Croatia"
+        android:layout_marginTop="136dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/beer_since"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Since: 1892"
+        android:layout_marginTop="166dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+    />
+
+    <TextView
+        android:id="@+id/beer_alcohol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="5%"
+        android:layout_marginTop="196dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+    />
+
+    <ImageButton
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_clear_2"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/card_background"
+        />
+
+
+
+
+</androidx.cardview.widget.CardView>

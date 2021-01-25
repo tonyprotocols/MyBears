@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity implements ButtonExitFFromAboutListener {
+public class MainActivity extends AppCompatActivity implements ButtonExitFFromAboutListener{
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -85,4 +86,6 @@ public class MainActivity extends AppCompatActivity implements ButtonExitFFromAb
     public void onButtonCLicked(boolean state) {
         onBackPressed();
     }
+
+
 }
