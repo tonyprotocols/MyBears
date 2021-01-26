@@ -9,6 +9,7 @@
     android:outlineAmbientShadowColor="@color/black"
     android:outlineSpotShadowColor="@color/black"
     android:backgroundTint="@color/card_background"
+    android:id="@+id/item_card_beer"
     >
 
     <ImageView

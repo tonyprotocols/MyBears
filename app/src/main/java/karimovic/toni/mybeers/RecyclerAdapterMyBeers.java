@@ -1,22 +1,21 @@
 package karimovic.toni.mybeers;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.IOException;
 import java.util.List;
 
-public class RecyclerViewMyBeers extends RecyclerView.Adapter<RecyclerViewMyBeers.NameViewHolder>   {
+public class RecyclerAdapterMyBeers extends RecyclerView.Adapter<RecyclerAdapterMyBeers.NameViewHolder>   {
     private List<Beer> list;
-    private OnCardClickListener onCardListener;
     private Context context;
 
     public class NameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -29,17 +28,16 @@ public class RecyclerViewMyBeers extends RecyclerView.Adapter<RecyclerViewMyBeer
         private TextView tvCountry;
         private TextView tvSince;
         private TextView tvBeerAlcohol;
+        private ImageButton buttonRemove;
 
-        private OnCardClickListener onCardClickListener;
-
-        public NameViewHolder(@NonNull View itemView, OnCardClickListener listener) {
+        public NameViewHolder(@NonNull View itemView) {
             super(itemView);
             this.tvName=itemView.findViewById(R.id.beer_name);
             this.imageViewBeer = itemView.findViewById(R.id.image_view_my_beer);
             this.tvCountry = itemView.findViewById(R.id.beer_state);
             this.tvSince = itemView.findViewById(R.id.beer_since);
             this.tvBeerAlcohol = itemView.findViewById(R.id.beer_alcohol);
-            this.onCardClickListener = listener;
+            this.buttonRemove = itemView.findViewById(R.id.btn_remove_beer);
             itemView.setOnClickListener(this);
 
         }
@@ -67,9 +65,8 @@ public class RecyclerViewMyBeers extends RecyclerView.Adapter<RecyclerViewMyBeer
     }
 
 
-    public RecyclerViewMyBeers(OnCardClickListener listener, List<Beer> list, Context context){
+    public RecyclerAdapterMyBeers(List<Beer> list, Context context){
         this.list=list;
-        this.onCardListener = listener;
         this.context = context;
     }
 
@@ -77,7 +74,7 @@ public class RecyclerViewMyBeers extends RecyclerView.Adapter<RecyclerViewMyBeer
     @Override
     public NameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View listItem= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view_my_beers, parent, false);
-        return new NameViewHolder(listItem, onCardListener);
+        return new NameViewHolder(listItem);
     }
 
     @Override
@@ -87,6 +84,12 @@ public class RecyclerViewMyBeers extends RecyclerView.Adapter<RecyclerViewMyBeer
         holder.setTvCountry(list.get(position));
         holder.setTvSince(list.get(position));
         holder.setTvBeerAlcohol(list.get(position));
+        holder.buttonRemove.setOnClickListener(v -> {
+            Log.d("TAG", "size" + list.size() + "position: " + position);
+            list.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, getItemCount());
+        });
     }
 
     @Override

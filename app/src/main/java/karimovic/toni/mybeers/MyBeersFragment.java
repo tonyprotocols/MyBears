@@ -1,28 +1,26 @@
 package karimovic.toni.mybeers;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyBeersFragment extends Fragment {
+public class MyBeersFragment extends Fragment implements NotifyInterface {
     public static final String COUNTRY = "Country: ";
     public static final String SINCE = "Since: ";
 
 
     protected RecyclerView mRecyclerView;
 
-    protected RecyclerViewMyBeers mAdapter;
+    protected RecyclerAdapterMyBeers mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -37,34 +35,33 @@ public class MyBeersFragment extends Fragment {
         mLayoutManager = new GridLayoutManager(requireActivity(), 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        List<Beer> list = new ArrayList<Beer>();
-        Beer beer1 = null;
-        beer1 = new Beer("Ozujsko", new String(COUNTRY + "Croatia"), "aaa", "5%", SINCE + "1892", R.drawable.ozujskoteaser);
-        list.add(beer1);
+        MainActivity mainActivity = (MainActivity) getActivity();
+        List<Beer> list = mainActivity.getMyBeers();
 
-        Beer beer2 = null;
-        beer2 = new Beer("Staropramen", new String(COUNTRY + "Czech Republic"), "aaa", "5%", SINCE + "1869", R.drawable.staropramen);
-        list.add(beer2);
-
-        Beer beer3 = null;
-        beer3 = new Beer("Heineken", new String(COUNTRY + "Dutch"), "aaa", "5%", SINCE + "1873", R.drawable.images);
-        list.add(beer3);
-
-
-
-        mAdapter = new RecyclerViewMyBeers(null, list, requireContext());
+        mAdapter = new RecyclerAdapterMyBeers(list, requireContext());
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
+
         // END_INCLUDE(initializeRecyclerView)
 
         return rootView;
     }
 
-
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
+    public void onClick() {
+        mAdapter.notifyDataSetChanged();
     }
 
 
+   /* @Override
+    public void onCardClick(int position) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("Remove from my beers?")
+                .setPositiveButton("Yes", (DialogInterface.OnClickListener) v -> {
+
+                })
+                .setTitle(R.string.dialog_title);
+        AlertDialog dialog = builder.create();
+    }*/
 }
