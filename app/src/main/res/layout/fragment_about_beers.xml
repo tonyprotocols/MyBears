@@ -24,7 +24,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        />
+        android:contentDescription="TODO" />
     <TextView
         android:id="@+id/aboutText"
         android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
         android:backgroundTint="#F5F6E9"
-        />
+        android:contentDescription="TODO" />
 
 
 

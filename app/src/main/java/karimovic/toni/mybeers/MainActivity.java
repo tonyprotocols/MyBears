@@ -1,21 +1,12 @@
 package karimovic.toni.mybeers;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
-
-import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -29,9 +20,6 @@ public class MainActivity extends AppCompatActivity implements ButtonExitFFromAb
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private ImageButton mInfoButton;
-    private AboutAppFragment mAboutAppFragment;
-    private FragmentManager mFragmentManager;
-    private NotifyInterface onClickListener;
     private List<Beer> listMyBeers;
     private List<Beer> listAllBeers;
 
@@ -46,9 +34,7 @@ public class MainActivity extends AppCompatActivity implements ButtonExitFFromAb
         return listMyBeers;
     }
     public void addToMyBeers(int position){
-        listAllBeers.add(listAllBeers.get(position));
-
-        onClickListener.onClick();
+        listMyBeers.add(listAllBeers.get(position));
     }
 
     @Override
@@ -64,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements ButtonExitFFromAb
 
 
 
-        listMyBeers = new ArrayList<Beer>();
+        listMyBeers = new ArrayList<>();
         Beer beer1 = null;
         beer1 = new Beer("Ozujsko Pivo", new String(COUNTRY + "Croatia"), "Ozujsko Pivo, a blond beer, is Croatia’s leading brand, dating from 1893. The selection of hops and barley gives Ozujsko a refreshing taste and fine bitter aroma. It should be served at 3°C with compact foam.\n", "5%", SINCE + "1892", R.drawable.ozujskoteaser);
         listMyBeers.add(beer1);
@@ -77,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements ButtonExitFFromAb
         beer3 = new Beer("Heineken", new String(COUNTRY + "Dutch"), "Heineken is a full-bodied premium lager with deep golden color, light fruity aroma, a mild bitter taste and a balanced hop aroma leaving a crisp, clean finish for ultimate refreshing taste. The only beer enjoyed in 192 countries.", "5%", SINCE + "1873", R.drawable.images);
         listMyBeers.add(beer3);
 
-        listAllBeers = new ArrayList<Beer>();
+        listAllBeers = new ArrayList<>();
         listAllBeers.add(beer1);
         listAllBeers.add(beer2);
         listAllBeers.add(beer3);
@@ -92,21 +78,14 @@ public class MainActivity extends AppCompatActivity implements ButtonExitFFromAb
     private void setAboutAppButton() {
         AboutAppFragment aboutAppFragment = new AboutAppFragment();
         mInfoButton = (ImageButton) findViewById(R.id.btAboutApp);
-        mInfoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.flAboutAppFragmentContainer, aboutAppFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+        mInfoButton.setOnClickListener(v -> {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.flAboutAppFragmentContainer, aboutAppFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         });
     }
 
-    private void setUpAboutAppFragment() {
-
-
-    }
 
     private void setTabIcons() {
         ImageView imgViewMyBears= new ImageView(MainActivity.this);
@@ -135,6 +114,5 @@ public class MainActivity extends AppCompatActivity implements ButtonExitFFromAb
     public void onButtonCLicked(boolean state) {
         onBackPressed();
     }
-
 
 }

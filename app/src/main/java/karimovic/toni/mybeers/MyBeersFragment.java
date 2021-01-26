@@ -1,27 +1,28 @@
 package karimovic.toni.mybeers;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MyBeersFragment extends Fragment implements NotifyInterface {
-    public static final String COUNTRY = "Country: ";
-    public static final String SINCE = "Since: ";
-
+public class MyBeersFragment extends Fragment  {
 
     protected RecyclerView mRecyclerView;
 
     protected RecyclerAdapterMyBeers mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mAdapter.notifyDataSetChanged();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -38,18 +39,13 @@ public class MyBeersFragment extends Fragment implements NotifyInterface {
         MainActivity mainActivity = (MainActivity) getActivity();
         List<Beer> list = mainActivity.getMyBeers();
 
-        mAdapter = new RecyclerAdapterMyBeers(list, requireContext());
+        mAdapter = new RecyclerAdapterMyBeers(list);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 
-        // END_INCLUDE(initializeRecyclerView)
+
 
         return rootView;
-    }
-
-    @Override
-    public void onClick() {
-        mAdapter.notifyDataSetChanged();
     }
 
 

@@ -1,6 +1,5 @@
 package karimovic.toni.mybeers;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerAdapterMyBeers extends RecyclerView.Adapter<RecyclerAdapterMyBeers.NameViewHolder>   {
+public class RecyclerAdapterMyBeers extends RecyclerView.Adapter<RecyclerAdapterMyBeers.NameViewHolder>  {
     private List<Beer> list;
-    private Context context;
 
     public class NameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -42,7 +40,6 @@ public class RecyclerAdapterMyBeers extends RecyclerView.Adapter<RecyclerAdapter
 
         }
 
-        public TextView getText(){ return tvName; }
 
         public void setName(Beer beer){ tvName.setText(beer.getName());}
         public void setPic(Beer beer){ imageViewBeer.setImageResource(beer.getImage()); }
@@ -65,9 +62,8 @@ public class RecyclerAdapterMyBeers extends RecyclerView.Adapter<RecyclerAdapter
     }
 
 
-    public RecyclerAdapterMyBeers(List<Beer> list, Context context){
+    public RecyclerAdapterMyBeers(List<Beer> list){
         this.list=list;
-        this.context = context;
     }
 
     @NonNull

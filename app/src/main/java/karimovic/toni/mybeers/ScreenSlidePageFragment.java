@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 public class ScreenSlidePageFragment extends Fragment {
     private static final String BUNDLE_MESSAGE = "message";
-    private TextView mMessageTextView;
+
     public static ScreenSlidePageFragment newInstance(String message) {
         ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
         Bundle args = new Bundle();
@@ -29,17 +29,9 @@ public class ScreenSlidePageFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //mMessageTextView = view.findViewById(R.id.tvMessage);
-        setUpTextView();
+
     }
-    private void setUpTextView() {
-        String message = getString(R.string.hello_world);
-        if (getArguments() != null) {
-            String argMessage = getArguments().getString(BUNDLE_MESSAGE);
-            if (argMessage != null && !argMessage.isEmpty()) {
-                message = argMessage;
-            }
-        }
-        mMessageTextView.setText(message);
-    }
+
+
+
 }

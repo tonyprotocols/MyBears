@@ -1,6 +1,5 @@
 package karimovic.toni.mybeers;
 
-import android.graphics.drawable.Drawable;
 
 public class Beer {
     private String name;

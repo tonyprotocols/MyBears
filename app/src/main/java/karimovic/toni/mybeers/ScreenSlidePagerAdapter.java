@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import java.util.Locale;
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     private static final int NUM_PAGES = 2;

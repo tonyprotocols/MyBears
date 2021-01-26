@@ -1,6 +1,5 @@
 package karimovic.toni.mybeers;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,12 +36,8 @@ public class RecyclerAdapterAllBeers extends RecyclerView.Adapter<RecyclerAdapte
 
         }
 
-        public TextView getText(){ return tvName; }
-
         public void setName(Beer beer){ tvName.setText(beer.getName());}
         public void setPic(Beer beer){ imageViewBeer.setImageResource(beer.getImage()); }
-
-
 
 
         @Override
@@ -64,9 +59,7 @@ public class RecyclerAdapterAllBeers extends RecyclerView.Adapter<RecyclerAdapte
     public void onBindViewHolder(@NonNull NameViewHolder holder, int position) {
         holder.setName(list.get(position));
         holder.setPic(list.get(position));
-        holder.itemCardBeer.setOnClickListener(v -> {
-            onCardListener.onCardClick(position);
-        });
+        holder.itemCardBeer.setOnClickListener(v -> onCardListener.onCardClick(position));
 
     }
 

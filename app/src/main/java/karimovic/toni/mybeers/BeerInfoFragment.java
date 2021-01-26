@@ -11,9 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public class BeerInfoFragment  extends Fragment {
+public class BeerInfoFragment extends Fragment {
     private ButtonExitFFromAboutListener mButtonListener;
-    private NotifyInterface notifyInterface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,23 +35,12 @@ public class BeerInfoFragment  extends Fragment {
         textViewDescription.setText(beer.getDescription());
         textViewName.setText(beer.getName());
 
-        mExitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mButtonListener != null)
-                    mButtonListener.onButtonCLicked(true);
-            }
+        mExitButton.setOnClickListener(v -> {
+            if (mButtonListener != null)
+                mButtonListener.onButtonCLicked(true);
         });
 
-        mAddToMyBeers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(notifyInterface != null){
-                    mainActivity.addToMyBeers(position);
-                    notifyInterface.onClick();
-                }
-            }
-        });
+        mAddToMyBeers.setOnClickListener(v -> mainActivity.addToMyBeers(position));
         return view;
     }
 
@@ -61,9 +49,6 @@ public class BeerInfoFragment  extends Fragment {
         super.onAttach(context);
         if (context instanceof ButtonExitFFromAboutListener) {
             mButtonListener = (ButtonExitFFromAboutListener) context;
-        }
-        if (context instanceof NotifyInterface) {
-            notifyInterface = (NotifyInterface) context;
         }
     }
 }
